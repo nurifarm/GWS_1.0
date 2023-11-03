@@ -1,31 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="true">
-    <!--
+	<!--
     ************************************************************
     * define "LOG_HOME_DIR" property
     ************************************************************
     -->
-	<property name="LOG_HOME_DIR" value="D:/DevRoot/GWS_1.0/logs"/>
+	<property name="LOG_HOME_DIR" value="D:/DevRoot/GWS_1.0/logs" />
 
-    <!--
+	<!--
     ************************************************************
     * [appender] api callback error log file appender
     ************************************************************
     -->
-	<appender name="apiCallbackErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="apiCallbackErrorLog"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_HOME_DIR}/api-callback-error.log</file>
-		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>${LOG_HOME_DIR}/api-callback-error-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-			<maxFileSize>10MB</maxFileSize>    
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>
+				${LOG_HOME_DIR}/api-callback-error-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<maxFileSize>10MB</maxFileSize>
 			<maxHistory>30</maxHistory>
 			<totalSizeCap>1GB</totalSizeCap>
 		</rollingPolicy>
 		<encoder>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} -
+				%msg%n</pattern>
 		</encoder>
 	</appender>
 
-    <!--
+	<!--
     ************************************************************
     * [appender] console
     ************************************************************
@@ -39,16 +43,16 @@
 	</appender>
 
 	<logger name="apiCallbackErrorLogger" level="info" additivity="false">
-		<appender-ref ref="apiCallbackErrorLog"/>
-		<appender-ref ref="console"/>
+		<appender-ref ref="apiCallbackErrorLog" />
+		<appender-ref ref="console" />
 	</logger>
 
 	<logger name="com.nurihome" level="debug" additivity="false">
-		<appender-ref ref="console"/>
+		<appender-ref ref="console" />
 	</logger>
 
 	<root level="info">
-		<appender-ref ref="console"/>
+		<appender-ref ref="console" />
 	</root>
 
 </configuration>
